@@ -1,5 +1,5 @@
 .header {
-  background: url("../assets/images/banner.jpg") no-repeat center;
+  background: url("../../assets/images/banner.jpg") no-repeat center;
   background-size: cover;
   min-height: 100vh;
 }
@@ -38,9 +38,29 @@
   color: #f2c12e;
 }
 
+.cart-icon-md-sm {
+  display: none;
+  padding-right: 1rem;
+}
+
+.cart-icon-lg-xl {
+  display: inline;
+  padding-right: 1rem;
+}
+
 @media (max-width: 992px) {
   .navbar-collapse {
     background-color: #ffffff7f;
     text-align: center;
+  }
+
+  .cart-icon-md-sm {
+    display: inline;
+    padding-right: 1rem;
+  }
+
+  .cart-icon-lg-xl {
+    display: none;
+    padding-right: 1rem;
   }
 }

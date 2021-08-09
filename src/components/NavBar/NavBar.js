@@ -1,5 +1,6 @@
 import './NavBar.css';
-import logo from './../assets/images/nglogo2.png';
+import logo from './../../assets/images/nglogo2.png';
+import CartWidget from './../CartWidget/CartWidget';
 
 function NavBar (){
   return (
@@ -13,6 +14,10 @@ function NavBar (){
 
         <div className="navbar-brand">
           <img src={logo} className="logo-img" alt="logo" />
+        </div>
+
+        <div className="cart-icon-md-sm">
+          <CartWidget />
         </div>
 
         <div className="collapse navbar-collapse" id="navbarNav">
@@ -33,6 +38,10 @@ function NavBar (){
               <p className="nav-link">Newsletter</p>
             </li> 
           </ul>
+        </div>
+
+        <div className="cart-icon-lg-xl">
+          <CartWidget />
         </div>
 
       </nav>
