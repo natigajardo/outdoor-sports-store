@@ -7,7 +7,6 @@ function App() {
     <div>
       <NavBar />
       <ItemListContainer greeting="Hola soy un item!"/>
-      <ItemListContainer greeting="Hola soy otro item!"/>
     </div>
   );
 }
