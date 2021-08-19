@@ -1,0 +1,18 @@
+.style-card {
+  width: 15rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  font-size: 28px;
+  font-weight: 400;
+  font-family: "Playfair Display", serif;
+  padding-top: 1rem;
+}
+
+.price-text {
+  font-size: 22px;
+  font-weight: bold;
+  font-family: sans-serif;
+}

@@ -1,18 +1,14 @@
 import React from "react";
 import "./ItemListContainer.css";
-import ItemCount from "./../ItemCount/ItemCount";
+import ItemList from "../ItemList/ItemList";
 
 const ItemListContainer = ({ greeting }) => {
-  const onAdd = (cantidad) => {
-    console.log(`Compré ${cantidad} items`);
-  };
-
   return (
-    <div className="item-list-container container-fluid">
+    <div className="item-list-container container">
       <div className="row">
         <h1 className="title-products text-center col-12">Productos</h1>
         <h2 className="text-center col-12">{greeting}</h2>
-        <ItemCount stock={10} initial={1} addItem={onAdd} />
+        <ItemList className="col-12" />
       </div>
     </div>
   );

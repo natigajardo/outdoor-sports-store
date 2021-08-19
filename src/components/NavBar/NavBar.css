@@ -5,14 +5,13 @@
 }
 
 .menu-navbar {
-  background-color: transparent !important;
+  background-color: #ffffff7f;
   width: 100%;
-  position: fixed;
   padding: 1 2.25rem;
   align-items: center;
   min-height: 5.875rem;
   font-weight: 600;
-  padding-top: 1.5rem;
+  padding-top: 1rem;
 }
 
 .logo-img {
