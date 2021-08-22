@@ -1,12 +1,15 @@
 .item-list-container {
-  background-color: antiquewhite;
+  background-color: white;
   padding-top: 1.8rem;
-  padding-bottom: 4.5rem;
   max-width: 100%;
 }
 
 .title-products {
   padding-top: 3rem;
-  font-size: 3rem;
+  font-size: 2.4rem;
   color: black;
+}
+
+p {
+  font-size: 1.3rem;
 }
