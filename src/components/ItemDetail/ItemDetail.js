@@ -21,8 +21,7 @@ const ItemDetail = ({ data }) => {
 
         <div className="col-sm-12 col-md-6 text-left">
           <h2>{data.title}</h2>
-          <p className="pt-2">Categoria de producto</p>
-          <h3 className="pt-2">${data.price * 1000}</h3>
+          <h3 className="pt-2">${data.price}</h3>
           <p className="pt-2">
             <span className="font-weight-bold">Descripción del producto: </span>
             <br />

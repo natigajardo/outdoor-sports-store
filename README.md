@@ -1,3 +1,23 @@
+Aplicación Inspirada en Tienda National Geographic
+
+Este proyecto fue inspirado en la marca NatGeo para hacer una aplicación en React.
+Para esta página quise incluir (en el navbar) los principales items para una tienda online, ya sea un
+campo "nosotros", "productos" donde se puede ver un listado de ellos sin discriminar, "categorías"
+donde si se pueden ver los productos según su categoría tales como mochilas, bolsos, carpas y bananos,
+y finalmente un item de Tours que no tiene mayor desarrollo aún.
+
+Se instaló bootstrap mediante CDN y GoogleFonts en el index.html, ya que solo era una tipografía
+la utilizada no era necesario instalarla en un archivo aparte donde hubiera un conjunto de ellas.
+En cuanto a fontAwesome también se incorporó en el proyecto mediante link al index.html porque solo
+utilicé el icono del Cart.
+
+Se instaló por npm node-modules (npm install), axios y react-router-dom, por lo que no incluí dependencias
+fuera de las utilizadas en clase.
+
+Si hay algo por mejorar sería el utilizar por react algun framework de estilos, como react-boostrap u otro,
+para el curso decidí no implementarlo ya que es desconocido para mi, y no quise darme mas carga aparte de
+aprender react que personalmente considero que necesita su tiempo de estudio.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

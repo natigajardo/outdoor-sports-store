@@ -1,25 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./ItemList.css";
+import { Link } from "react-router-dom";
 // Importe de elementos
 import Item from "../Item/Item";
 
-const ItemList = () => {
-  const [products, setProducts] = useState([]);
-  //console.log("estado", products);
-
-  useEffect(() => {
-    fetch("https://mocki.io/v1/0f1e147a-8fe9-4c78-9abb-08c2c67493dc")
-      .then((response) => response.json())
-      .then((respuesta) => {
-        setTimeout(() => setProducts(respuesta), 2000);
-      });
-  }, []);
-
+const ItemList = ({ products }) => {
   return (
     <div className="col-12">
       <div className="row row-propiedades">
         {products.map((product) => {
-          return <Item key={product.id} data={product} />;
+          return (
+            <div key={product.id} className="col-sm-12 col-md-6 col-lg-4 mb-4">
+              <Link to={`/item/${product.id}`}>
+                <Item data={product} />
+              </Link>
+            </div>
+          );
         })}
       </div>
     </div>

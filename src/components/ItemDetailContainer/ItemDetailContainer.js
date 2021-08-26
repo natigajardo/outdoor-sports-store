@@ -5,19 +5,19 @@ import axios from "axios";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import Spinner from "../Spinner/Spinner";
 
-const ItemDetailContainer = () => {
+const ItemDetailContainer = ({ match }) => {
   const [product, setProduct] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  //console.log(product);
+  let ItemId = match.params.id;
 
   useEffect(() => {
     axios
-      .get("https://mocki.io/v1/0f1e147a-8fe9-4c78-9abb-08c2c67493dc")
-      .then((res) => setProduct(res.data[Math.floor(Math.random() * 5)]));
+      .get("https://mocki.io/v1/5f41d078-f975-476b-b74a-821424842f85")
+      .then((res) => setProduct(res.data[ItemId - 1]));
     setTimeout(() => {
       setIsLoading(false);
     }, 2000);
-  }, []);
+  }, [ItemId]);
 
   return (
     <div className="text-center background-detail-container">
