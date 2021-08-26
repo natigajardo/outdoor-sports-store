@@ -18,6 +18,8 @@ Si hay algo por mejorar sería el utilizar por react algun framework de estilos,
 para el curso decidí no implementarlo ya que es desconocido para mi, y no quise darme mas carga aparte de
 aprender react que personalmente considero que necesita su tiempo de estudio.
 
+Agregué el GIF en la carpeta assets/icons.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
