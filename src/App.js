@@ -8,6 +8,7 @@ import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailCont
 
 //import de views
 import Home from "./views/Home/Home";
+import Cart from "./views/Cart/Cart";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             component={ItemListContainer}
           ></Route>
           <Route path="/item/:id" component={ItemDetailContainer}></Route>
+          <Route path="/cart" component={Cart}></Route>
         </Switch>
       </div>
     </Router>

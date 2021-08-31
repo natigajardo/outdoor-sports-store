@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ItemDetail.css";
+import { NavLink } from "react-router-dom";
 // Import itemcount
 import ItemCount from "../ItemCount/ItemCount";
 
 const ItemDetail = ({ data }) => {
+  const [addQuantity, setAddQuantity] = useState(null);
+
   const onAdd = (cantidad) => {
-    console.log(`Compré ${cantidad} items`);
+    //console.log(`Compré ${cantidad} items`);
+    if (cantidad > 0) {
+      setAddQuantity(cantidad);
+    }
   };
+
+  if (addQuantity > 0) {
+    console.log("item agregado:", addQuantity);
+  }
 
   return (
     <div className="container">
@@ -34,8 +44,17 @@ const ItemDetail = ({ data }) => {
           <br></br>
           <div className="row">
             <div className="col-6">
-              <ItemCount stock={10} initial={1} addItem={onAdd} />
-            </div>
+            {/* Se agregó el contador vs botón  */}
+            { (addQuantity === null) ? 
+                <ItemCount stock={10} initial={1} addItem={onAdd} />
+               :
+                <NavLink to="/cart">
+                  <button type="button" className="btn btn-warning">
+                    Terminar mi compra
+                  </button>
+                </NavLink>
+              }
+          </div>
           </div>
         </div>
       </div>

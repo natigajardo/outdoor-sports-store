@@ -21,6 +21,8 @@ const ItemCount = ({ stock, initial, addItem }) => {
   const addProductToCart = () => {
     if (counter > 0) {
       addItem(counter);
+    } else {
+      console.log("No puedes agregar cero items");
     }
   };
 
@@ -30,11 +32,14 @@ const ItemCount = ({ stock, initial, addItem }) => {
         <button type="button" className="btn btn-secondary" onClick={restItems}>
           -
         </button>
+
         <p className="mx-5 mt-2">{counter}</p>
+
         <button type="button" className="btn btn-secondary" onClick={addItems}>
           +
         </button>
       </div>
+
       <div className="btn btn-primary mt-3 w-100" onClick={addProductToCart}>
         Add to Cart
       </div>
