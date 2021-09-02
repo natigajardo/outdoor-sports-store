@@ -1,22 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./ItemDetail.css";
 import { NavLink } from "react-router-dom";
 // Import itemcount
 import ItemCount from "../ItemCount/ItemCount";
+import { CartContext } from "../CartContext/CartContext";
 
 const ItemDetail = ({ data }) => {
   const [addQuantity, setAddQuantity] = useState(null);
+
+  const { addItemCart } = useContext(CartContext);
+  //console.log(addItemCart);
 
   const onAdd = (cantidad) => {
     //console.log(`Compré ${cantidad} items`);
     if (cantidad > 0) {
       setAddQuantity(cantidad);
     }
+    addItemCart(data, cantidad);
   };
 
-  if (addQuantity > 0) {
-    console.log("item agregado:", addQuantity);
-  }
+  // if (addQuantity > 0) {
+  //   console.log("item agregado:", addQuantity);
+  // }
 
   return (
     <div className="container">
@@ -43,18 +48,18 @@ const ItemDetail = ({ data }) => {
           </p>
           <br></br>
           <div className="row">
-            <div className="col-6">
-            {/* Se agregó el contador vs botón  */}
-            { (addQuantity === null) ? 
+            <div className="col-8">
+              {/* Se agregó el contador vs botón  */}
+              {addQuantity === null ? (
                 <ItemCount stock={10} initial={1} addItem={onAdd} />
-               :
+              ) : (
                 <NavLink to="/cart">
                   <button type="button" className="btn btn-warning">
-                    Terminar mi compra
+                    Ir al carrito
                   </button>
                 </NavLink>
-              }
-          </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

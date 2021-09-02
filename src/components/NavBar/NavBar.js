@@ -25,9 +25,9 @@ function NavBar() {
           <img src={logo} className="logo-img" alt="logo" />
         </div>
 
-        <div className="cart-icon-md-sm">
+        <NavLink to="/cart" className="cart-icon-md-sm text-decoration-none">
           <CartWidget />
-        </div>
+        </NavLink>
 
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mr-auto mt-2">
@@ -83,9 +83,9 @@ function NavBar() {
           </ul>
         </div>
 
-        <div className="cart-icon-lg-xl">
+        <NavLink to="/cart" className="cart-icon-lg-xl text-decoration-none">
           <CartWidget />
-        </div>
+        </NavLink>
       </nav>
     </div>
   );

@@ -28,6 +28,7 @@ const ItemCount = ({ stock, initial, addItem }) => {
 
   return (
     <div>
+      <p>Stock disponible: {stock} unidades</p>
       <div className="btn-group w-100" role="group" aria-label="Basic example">
         <button type="button" className="btn btn-secondary" onClick={restItems}>
           -
