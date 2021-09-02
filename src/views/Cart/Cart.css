@@ -42,3 +42,8 @@
   float: right;
   margin-top: -3rem;
 }
+
+.container-cart-item {
+  width: 90%;
+  margin: auto;
+}

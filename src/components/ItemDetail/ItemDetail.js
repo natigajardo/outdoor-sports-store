@@ -15,13 +15,9 @@ const ItemDetail = ({ data }) => {
     //console.log(`Compré ${cantidad} items`);
     if (cantidad > 0) {
       setAddQuantity(cantidad);
+      addItemCart(data, cantidad);
     }
-    addItemCart(data, cantidad);
   };
-
-  // if (addQuantity > 0) {
-  //   console.log("item agregado:", addQuantity);
-  // }
 
   return (
     <div className="container">
