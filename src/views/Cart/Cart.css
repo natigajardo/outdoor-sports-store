@@ -40,10 +40,15 @@
 .button-clear {
   position: relative;
   float: right;
-  margin-top: -3rem;
+  margin-bottom: 1rem;
 }
 
 .container-cart-item {
   width: 90%;
   margin: auto;
+}
+
+.total-cart {
+  padding: 2rem;
+  float: right;
 }

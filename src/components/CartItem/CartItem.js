@@ -3,13 +3,13 @@ import { CartContext } from "../CartContext/CartContext";
 import "./CartItem.css";
 
 const CartItem = ({ dataItem }) => {
-  const { removeItem } = useContext(CartContext);
+  const { removeItem, totalItemsPrice } = useContext(CartContext);
 
   // console.log(dataItem.id);
 
-  const totalItemsPrice = (dataPrice, dataQuantity) => {
-    return dataPrice * dataQuantity;
-  };
+  // const totalItemsPrice = (dataPrice, dataQuantity) => {
+  //   return dataPrice * dataQuantity;
+  // };
 
   return (
     <tbody>

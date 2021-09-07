@@ -1,11 +1,15 @@
+import React, { useContext } from "react";
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
 
 //import componentes
 import logo from "./../../assets/images/nglogo2.png";
 import CartWidget from "./../CartWidget/CartWidget";
+import { CartContext } from "../CartContext/CartContext";
 
 function NavBar() {
+  const { totalItemsCart } = useContext(CartContext);
+
   return (
     <div className="header">
       <nav className="navbar navbar-expand-lg navbar-light menu-navbar">
@@ -25,9 +29,11 @@ function NavBar() {
           <img src={logo} className="logo-img" alt="logo" />
         </div>
 
-        <NavLink to="/cart" className="cart-icon-md-sm text-decoration-none">
-          <CartWidget />
-        </NavLink>
+        {totalItemsCart !== 0 ? (
+          <NavLink to="/cart" className="cart-icon-md-sm text-decoration-none">
+            <CartWidget />
+          </NavLink>
+        ) : null}
 
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mr-auto mt-2">
@@ -83,9 +89,11 @@ function NavBar() {
           </ul>
         </div>
 
-        <NavLink to="/cart" className="cart-icon-lg-xl text-decoration-none">
-          <CartWidget />
-        </NavLink>
+        {totalItemsCart !== 0 ? (
+          <NavLink to="/cart" className="cart-icon-lg-xl text-decoration-none">
+            <CartWidget />
+          </NavLink>
+        ) : null}
       </nav>
     </div>
   );

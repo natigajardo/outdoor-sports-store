@@ -9,10 +9,10 @@ export const CartProvider = ({ children }) => {
   // some() por defecto devuelve false, pero es true si algún elemento del array cumple con la condición
   const isInCart = (id) => cart.some((dato) => dato.id === id);
 
-  const addItemCart = (item, cantidad) => {
-    if (isInCart(item.id)) {
+  const addItemCart = (data, cantidad) => {
+    if (isInCart(data.id)) {
       const newCart = cart.map((cartElement) => {
-        if (cartElement.id === item.id) {
+        if (cartElement.id === data.id) {
           return {
             ...cartElement,
             cantidad: cartElement.cantidad + cantidad,
@@ -21,20 +21,43 @@ export const CartProvider = ({ children }) => {
       });
       return setCart(newCart);
     } else {
-      setCart((e) => [...e, { ...item, cantidad }]);
+      setCart((e) => [...e, { ...data, cantidad }]);
     }
   };
 
   // Se elimina el item que corresponde al id que estoy pasando.
   const removeItem = (itemId) => {
-    console.log("removeiteminside:", itemId);
+    // console.log("removeiteminside:", itemId);
     setCart(cart.filter((item) => item.id !== itemId));
   };
 
   const clear = () => setCart([]);
 
+  const totalItemsPrice = (dataPrice, dataQuantity) => {
+    return dataPrice * dataQuantity;
+  };
+
+  const totalItemsCart = cart.reduce((acum, item) => {
+    return acum + item.cantidad;
+  }, 0);
+
+  const totalPrice = cart.reduce((acum, item) => {
+    let itemPrice = item.price * item.cantidad;
+    return acum + itemPrice;
+  }, 0);
+
   return (
-    <CartContext.Provider value={{ cart, clear, addItemCart, removeItem }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        clear,
+        addItemCart,
+        removeItem,
+        totalItemsPrice,
+        totalItemsCart,
+        totalPrice,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

@@ -1,19 +1,28 @@
 import React, { useContext } from "react";
 import "./Cart.css";
+import { NavLink } from "react-router-dom";
 
 //import components
 import CartItem from "../../components/CartItem/CartItem";
 import { CartContext } from "../../components/CartContext/CartContext";
 
 const Cart = () => {
-  const { cart, clear } = useContext(CartContext);
+  const { cart, clear, totalItemsCart, totalPrice } = useContext(CartContext);
 
   return (
     <div className="cart-section-container">
-      <header>{/* Botón continuar comprando que lleve al home  */}</header>
       <section className="main-cart-section">
         <h1>Shopping Cart</h1>
-        <p>Tu tienes X items en el Cart</p>
+        {totalItemsCart !== 0 ? (
+          <p>Tienes {totalItemsCart} items en el Carrito</p>
+        ) : (
+          <p>Tu carrito está vacío</p>
+        )}
+
+        <NavLink to="/" className="btn btn-info">
+          Seguir comprando
+        </NavLink>
+
         <button onClick={clear} className="btn btn-info button-clear">
           Limpiar
         </button>
@@ -37,6 +46,7 @@ const Cart = () => {
             </table>
           </div>
         </div>
+        <p className="total-cart">Total : ${totalPrice} </p>
       </section>
     </div>
   );
