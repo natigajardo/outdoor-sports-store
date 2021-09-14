@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./ItemDetailContainer.css";
-import axios from "axios";
+//import axios from "axios";
+
+// import firebase
+import { collection, getDocs } from "firebase/firestore";
+import db from "../../firebase/firebaseConfig";
+
 // import Componentes
 import ItemDetail from "../ItemDetail/ItemDetail";
 import Spinner from "../Spinner/Spinner";
@@ -11,9 +16,15 @@ const ItemDetailContainer = ({ match }) => {
   let ItemId = match.params.id;
 
   useEffect(() => {
-    axios
-      .get("https://mocki.io/v1/5f41d078-f975-476b-b74a-821424842f85")
-      .then((res) => setProduct(res.data[ItemId - 1]));
+    const obtenerData = async () => {
+      const data = await getDocs(collection(db, "natgeo-products"));
+      //setProducts(data.docs);
+
+      const dataItems = data.docs;
+      setProduct(dataItems[ItemId - 1].data());
+    };
+    obtenerData();
+
     setTimeout(() => {
       setIsLoading(false);
     }, 2000);
@@ -24,7 +35,11 @@ const ItemDetailContainer = ({ match }) => {
       <h1 className="title-detail-container">ItemDetailContainer</h1>
       <div>
         <p className="text-center pb-5 item-detail-title ">ItemDetail</p>
-        {isLoading ? <Spinner /> : <ItemDetail data={product} />}
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <ItemDetail data={product} key={product.id_store} />
+        )}
       </div>
     </div>
   );

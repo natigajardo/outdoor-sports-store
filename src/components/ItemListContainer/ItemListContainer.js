@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+// import firebase
+import { collection, getDocs } from "firebase/firestore";
+import db from "../../firebase/firebaseConfig";
+
 //import components
 import "./ItemListContainer.css";
 import ItemList from "../ItemList/ItemList";
@@ -12,17 +16,23 @@ const ItemListContainer = ({ greeting }) => {
   const { categoryId } = useParams();
 
   useEffect(() => {
-    fetch("https://mocki.io/v1/5f41d078-f975-476b-b74a-821424842f85")
-      .then((response) => response.json())
-      .then((respuesta) => {
-        setTimeout(() => {
-          //console.log(respuesta.filter((x) => x.category === categoryId));
-          categoryId
-            ? setProducts(respuesta.filter((x) => x.category === categoryId))
-            : setProducts(respuesta);
-          setIsLoading(false);
-        }, 2000);
-      });
+    const obtenerData = async () => {
+      const data = await getDocs(collection(db, "natgeo-products"));
+      //setProducts(data.docs);
+
+      const dataItems = data.docs;
+      //console.log(dataItems);
+      //setProducts(dataItems);
+
+      categoryId
+        ? setProducts(dataItems.filter((e) => e.data().category === categoryId))
+        : setProducts(dataItems);
+    };
+    obtenerData();
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
   }, [categoryId]);
 
   return (

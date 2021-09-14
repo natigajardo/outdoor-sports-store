@@ -30,7 +30,7 @@ const CartItem = ({ dataItem }) => {
         <td className="text-center">
           <button
             className="btn fas fa-trash-alt text-center"
-            onClick={() => removeItem(dataItem.id)}
+            onClick={() => removeItem(dataItem.id_store)}
           ></button>
         </td>
       </tr>

@@ -9,10 +9,15 @@ const ItemList = ({ products }) => {
     <div className="col-12">
       <div className="row row-propiedades">
         {products.map((product) => {
+          const item = product.data();
+          //console.log(item);
           return (
-            <div key={product.id} className="col-sm-12 col-md-6 col-lg-4 mb-4">
-              <Link to={`/item/${product.id}`}>
-                <Item data={product} />
+            <div
+              key={item.id_store}
+              className="col-sm-12 col-md-6 col-lg-4 mb-4"
+            >
+              <Link to={`/item/${item.id_store}`}>
+                <Item data={item} />
               </Link>
             </div>
           );
