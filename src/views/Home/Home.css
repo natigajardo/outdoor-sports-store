@@ -1,0 +1,5 @@
+.header {
+  background: url("../../assets/images/banner2.jpg") no-repeat center;
+  background-size: cover;
+  min-height: 60vh;
+}

@@ -11,7 +11,7 @@ function NavBar() {
   const { totalItemsCart } = useContext(CartContext);
 
   return (
-    <div className="header">
+    <div>
       <nav className="navbar navbar-expand-lg navbar-light menu-navbar">
         <button
           className="navbar-toggler"

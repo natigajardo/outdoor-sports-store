@@ -46,7 +46,14 @@ const Cart = () => {
             </table>
           </div>
         </div>
-        <p className="total-cart">Total : ${totalPrice} </p>
+        <div className="total-cart">
+          <p className="d-inline mr-3 align-middle">Total : ${totalPrice} </p>
+          {totalPrice !== 0 ? (
+            <NavLink to="/form" className="btn btn-info align-middle">
+              Comprar
+            </NavLink>
+          ) : null}
+        </div>
       </section>
     </div>
   );

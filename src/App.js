@@ -11,6 +11,7 @@ import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailCont
 //import de views
 import Home from "./views/Home/Home";
 import Cart from "./views/Cart/Cart";
+import FormUser from "./views/FormUser/FormUser";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             ></Route>
             <Route path="/item/:id" component={ItemDetailContainer}></Route>
             <Route path="/cart" component={Cart}></Route>
+            <Route path="/form" component={FormUser}></Route>
           </Switch>
         </div>
       </Router>

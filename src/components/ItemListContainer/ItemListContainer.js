@@ -38,8 +38,8 @@ const ItemListContainer = ({ greeting }) => {
   return (
     <div className="item-list-container container">
       <div className="row">
-        <h1 className="title-products text-center col-12">ItemListContainer</h1>
-        <h2 className="text-center col-12">{greeting}</h2>
+        {/* <h1 className="title-products text-center col-12">ItemListContainer</h1> */}
+        <h1 className="text-center col-12">{greeting}</h1>
 
         {categoryId ? (
           <h2 className="text-center col-12">Categoría: {categoryId}</h2>

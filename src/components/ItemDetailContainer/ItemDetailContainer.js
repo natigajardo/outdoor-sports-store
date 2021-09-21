@@ -32,9 +32,9 @@ const ItemDetailContainer = ({ match }) => {
 
   return (
     <div className="text-center background-detail-container">
-      <h1 className="title-detail-container">ItemDetailContainer</h1>
+      {/* <h1 className="title-detail-container">ItemDetailContainer</h1> */}
       <div>
-        <p className="text-center pb-5 item-detail-title ">ItemDetail</p>
+        {/* <p className="text-center pb-5 item-detail-title ">ItemDetail</p> */}
         {isLoading ? (
           <Spinner />
         ) : (
