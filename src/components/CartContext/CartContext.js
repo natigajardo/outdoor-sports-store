@@ -1,4 +1,7 @@
 import React, { createContext, useState } from "react";
+//import firebase
+import { collection, addDoc, Timestamp } from "firebase/firestore";
+import db from "./../../firebase/firebaseConfig";
 
 export const CartContext = createContext();
 
@@ -31,7 +34,7 @@ export const CartProvider = ({ children }) => {
     setCart(cart.filter((item) => item.id_store !== itemId));
   };
 
-  const clear = () => setCart([]);
+  const clearCart = () => setCart([]);
 
   const totalItemsPrice = (dataPrice, dataQuantity) => {
     return dataPrice * dataQuantity;
@@ -46,16 +49,34 @@ export const CartProvider = ({ children }) => {
     return acum + itemPrice;
   }, 0);
 
+  const newOrder = async (name, phone, email) => {
+    if (totalPrice > 0) {
+      const docRef = await addDoc(collection(db, "order-products"), {
+        name: name,
+        email: email,
+        phone: phone,
+        items: cart,
+        total: totalPrice,
+        date: Timestamp.fromDate(new Date()),
+        state: "generada",
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } else {
+      console.log("No puedes comprar 0 productos");
+    }
+  };
+
   return (
     <CartContext.Provider
       value={{
         cart,
-        clear,
+        clearCart,
         addItemCart,
         removeItem,
         totalItemsPrice,
         totalItemsCart,
         totalPrice,
+        newOrder,
       }}
     >
       {children}

@@ -6,6 +6,7 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
+  // Tuve la intenciónde utilizar el .env para las variables, sin embargo en consola reporta un error, según lo que investigue es un error propio de la version beta 9 de firebase por lo que la única solución es poner las claves tal cual.
   apiKey: "AIzaSyDRACIxSl6bTy-8aNPwdk0JMMmhdCrmZ88",
   authDomain: "natgeo-db.firebaseapp.com",
   projectId: "natgeo-db",

@@ -1,49 +1,53 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 //firestore
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 import db from "../../firebase/firebaseConfig";
 
-// import
-import { CartContext } from "../../components/CartContext/CartContext";
-
-const Confirm2 = ({ orderIdGenerate }) => {
+const Confirm2 = ({ userEmail }) => {
   const [orderComplete, setOrderComplete] = useState({});
-  const { clear } = useContext(CartContext);
+  const [orderId, setOrderId] = useState("");
 
   useEffect(() => {
     const obtenerData = async () => {
-      const collectionTest = await getDocs(collection(db, "tests2"));
+      const q = query(
+        collection(db, "order-products"),
+        orderBy("date", "desc"),
+        limit(1)
+      );
+
+      const collectionTest = await getDocs(q);
 
       collectionTest.forEach((doc) => {
-        if (doc.id === orderIdGenerate) {
-          //console.log(doc.id, " => ", doc.data());
-          setOrderComplete(doc.data());
+        const dataOrders = doc.data();
+
+        if (dataOrders.email === userEmail) {
+          //console.log(userEmail, doc.data());
+          setOrderComplete(dataOrders);
+          setOrderId(doc.id);
         }
+        //setOrderId(doc.id);
       });
     };
 
     obtenerData();
   }, []);
 
-  console.log("orden obtenida", orderComplete.buyer);
+  //console.log("orden obtenida", orderComplete);
 
   return (
-    <div>
+    <div className="container m-5">
       <div className="my-3">
         <h2>Datos de Orden</h2>
         <hr></hr>
-        <h3>Número de orden: {orderIdGenerate}</h3>
+        <h3>Número de orden: {orderId}</h3>
         <div className="row">
           <div className="col mt-2">
-            <h4 className="title-confirm-table">Datos del usuario</h4>
-            <p>Nombre: </p>
-            <p>Apellido:</p>
-            <p>Email: </p>
-            <p>Telefono:</p>
-            <p>Dirección: </p>
-            <p>Ciudad: </p>
+            <h4 className="title-confirm-table pb-2">Datos del usuario</h4>
+            <p>Nombre: {orderComplete.name}</p>
+            <p>Email: {orderComplete.email}</p>
+            <p>Telefono: {orderComplete.phone}</p>
           </div>
           <div className="col mt-2">
             <h4 className="title-confirm-table">Resumen de compra</h4>
@@ -51,9 +55,7 @@ const Confirm2 = ({ orderIdGenerate }) => {
           </div>
         </div>
         <NavLink to="/">
-          <button onClick={clear} className="btn btn-info text-center">
-            Volver al Home
-          </button>
+          <button className="btn btn-info text-center">Volver al Home</button>
         </NavLink>
       </div>
     </div>

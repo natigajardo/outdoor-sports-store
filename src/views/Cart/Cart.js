@@ -7,7 +7,8 @@ import CartItem from "../../components/CartItem/CartItem";
 import { CartContext } from "../../components/CartContext/CartContext";
 
 const Cart = () => {
-  const { cart, clear, totalItemsCart, totalPrice } = useContext(CartContext);
+  const { cart, clearCart, totalItemsCart, totalPrice } =
+    useContext(CartContext);
 
   return (
     <div className="cart-section-container">
@@ -23,7 +24,7 @@ const Cart = () => {
           Seguir comprando
         </NavLink>
 
-        <button onClick={clear} className="btn btn-info button-clear">
+        <button onClick={clearCart} className="btn btn-info button-clear">
           Limpiar
         </button>
         <div className="cart-items">

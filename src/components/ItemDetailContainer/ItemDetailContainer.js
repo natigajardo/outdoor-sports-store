@@ -13,6 +13,7 @@ import Spinner from "../Spinner/Spinner";
 const ItemDetailContainer = ({ match }) => {
   const [product, setProduct] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [productExists, setProductExists] = useState(false);
   let ItemId = match.params.id;
 
   useEffect(() => {
@@ -21,7 +22,13 @@ const ItemDetailContainer = ({ match }) => {
       //setProducts(data.docs);
 
       const dataItems = data.docs;
-      setProduct(dataItems[ItemId - 1].data());
+
+      if (ItemId <= dataItems.length) {
+        setProduct(dataItems[ItemId - 1].data());
+        setProductExists(true);
+      } else {
+        alert("Este producto no existe");
+      }
     };
     obtenerData();
 
@@ -32,10 +39,8 @@ const ItemDetailContainer = ({ match }) => {
 
   return (
     <div className="text-center background-detail-container">
-      {/* <h1 className="title-detail-container">ItemDetailContainer</h1> */}
       <div>
-        {/* <p className="text-center pb-5 item-detail-title ">ItemDetail</p> */}
-        {isLoading ? (
+        {isLoading || productExists === false ? (
           <Spinner />
         ) : (
           <ItemDetail data={product} key={product.id_store} />
