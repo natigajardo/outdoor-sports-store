@@ -1,4 +1,4 @@
-NATIONAL GEOGRAPHIC STORE - REACT APP
+# NATIONAL GEOGRAPHIC STORE - REACT APP
 
 Este proyecto fue inspirado en la marca NatGeo para hacer una aplicación en React.
 Para esta página quise incluir (en el navbar) los principales items para una tienda online, ya sea un
@@ -11,6 +11,11 @@ Construida con
 - ReactJs / Bootstrap 4.6 / GoogleFonts / FontAwesome (icono del cart) / React Router Dom
 - Firebase para el manejo de las imágenes (Storage) y Firestore Database
 - Formik para el formulario de compras
+
+# Gif project functionality
+
+![gifNatgeo-min](https://user-images.githubusercontent.com/62077533/136099711-9fc5a97b-0c51-47a6-8005-e344f8da2ce7.gif)
+
 
 # Getting Started with Create React App
 
